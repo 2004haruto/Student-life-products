@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>掲示板アプリ</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <h1>掲示板アプリ</h1>
+
+  <!-- ユーザーログインフォーム -->
+  <div id="login-form">
+    <h2>ログイン</h2>
+    <input type="email" id="email" placeholder="メールアドレス" required>
+    <input type="password" id="password" placeholder="パスワード" required>
+    <button onclick="login()">ログイン</button>
+    <p id="login-message"></p>
+  </div>
+
+  <!-- 投稿フォーム -->
+  <div id="post-form" style="display: none;">
+    <h2>新しい投稿を作成</h2>
+    <input type="text" id="title" placeholder="タイトル" required>
+    <textarea id="content" placeholder="内容"></textarea>
+    <button onclick="createPost()">投稿する</button>
+  </div>
+
+  <!-- 投稿一覧 -->
+  <h2>投稿一覧</h2>
+  <ul id="posts"></ul>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>

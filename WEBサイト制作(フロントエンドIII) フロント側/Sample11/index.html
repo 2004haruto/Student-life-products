@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>JWT認証ハンズオン</title>
+</head>
+<body>
+  <h1>JWTを使ったログイン認証</h1>
+
+  <!-- ログインフォーム -->
+  <div id="login-form">
+    <h2>ログイン</h2>
+    <input type="email" id="email" placeholder="メールアドレス" required>
+    <input type="password" id="password" placeholder="パスワード" required>
+    <button id="loginBtn">ログイン</button>
+    <p id="login-message"></p>
+  </div>
+
+  <!-- ユーザー一覧表示 -->
+  <div id="user-list">
+    <h2>ユーザー一覧</h2>
+    <ul id="users"></ul>
+    <button id="logoutBtn">ログアウト</button>
+  </div>
+
+  <script src="scripts/sample11.js"></script>
+</body>
+</html>

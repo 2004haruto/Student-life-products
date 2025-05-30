@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サンプル14</title>
+</head>
+<body>
+  <h1>ファイルとJSONデータを送信</h1>
+  <form id="uploadForm">
+    <label for="fileInput">ファイル:</label>
+    <input type="file" id="fileInput" name="file" required>
+    <br>
+    <label for="title"><input type="text" name="title" id="title" placeholder="タイトル"></label>
+    <br>
+    <label for="description">
+      <textarea name="description" id="description" placeholder="画像の説明" cols="50" rows="10"></textarea>
+    </label>
+    <br>
+    <button type="submit">送信</button>
+  </form>
+  <p id="message"></p>
+  <p id="imgArea"></p>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

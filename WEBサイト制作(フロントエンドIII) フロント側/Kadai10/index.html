@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT認証デモ</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="container">
+    <h1>JWT認証デモ</h1>
+
+    <!-- サインアップフォーム -->
+    <div id="signup-form">
+      <h2>サインアップ</h2>
+      <input type="text" id="signup-name" placeholder="名前">
+      <input type="email" id="signup-email" placeholder="メールアドレス">
+      <input type="password" id="signup-password" placeholder="パスワード">
+      <button id="signupBtn">サインアップ</button>
+      <p id="signup-message"></p>
+    </div>
+
+    <!-- ログインフォーム -->
+    <div id="login-form">
+      <h2>ログイン</h2>
+      <input type="email" id="login-email" placeholder="メールアドレス">
+      <input type="password" id="login-password" placeholder="パスワード">
+      <button id="loginBtn">ログイン</button>
+      <p id="login-message"></p>
+    </div>
+
+    <!-- プロフィール情報表示とログアウト -->
+    <div id="profile" style="display: none;">
+      <h2>プロフィール情報</h2>
+      <p id="profile-info"></p>
+      <button id="logoutBtn">ログアウト</button>
+    </div>
+  </div>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>

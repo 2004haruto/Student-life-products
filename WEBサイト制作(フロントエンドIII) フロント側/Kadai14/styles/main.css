@@ -1,0 +1,120 @@
+/* 全体のフォントと背景 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  width: 80%;
+}
+
+/* 見出しのスタイリング */
+h1, h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* フォームのスタイリング */
+form {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+form input, form button {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* 一覧表示のスタイリング */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 項目を均等に配置 */
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 10px; /* 各項目の間隔を調整 */
+}
+
+/* プロフィール画像 */
+li img {
+  flex-shrink: 0; /* 画像のサイズを固定 */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+li .profile-info {
+  flex: 1; /* 名前やメールアドレス部分を伸縮可能にする */
+  min-width: 150px; /* 必要最低限の幅を設定 */
+}
+
+/* ボタンを小さく調整 */
+li button {
+  flex-shrink: 0; /* ボタンのサイズを固定 */
+  margin-left: 10px;
+  padding: 8px 12px;
+  background-color: #FF5733;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+li button:hover {
+  background-color: #C70039;
+}
+
+/* フォームとリストの境界を強調 */
+.container {
+  margin-bottom: 20px;
+}
+
+.container .section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.container .section h2 {
+  margin-bottom: 15px;
+  color: #495057;
+}
