@@ -1,0 +1,90 @@
+h2 {
+  font-size: 2.4em;
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.list {
+  width: 30em;
+  margin-bottom: 5em;
+  transition: .5s ease;
+  cursor: pointer;
+}
+
+.thumbnail {
+  overflow: hidden;
+  width: 100%;
+  height: 30em;
+  background-color: #efefef;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: 1.3s ease;
+}
+
+.list:hover .thumbnail img {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.info {
+  background-color: #efefef;
+  padding: 2em 1em;
+}
+
+.info > h3 {
+  font-size: 1.4em;
+  margin-bottom: 1.2em;
+}
+
+.info > div {
+  text-align: right;
+  font-size: 1.2em;
+  margin-right: 1em;
+}
+
+#imgDialog {
+  width: 80%;
+  margin: auto;
+}
+
+#imgDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#imgDialog img {
+  display: block;
+  width: 100%;
+}
+
+#imgDialog i {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#imgDialog[open] {
+  animation: show .5s ease normal;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

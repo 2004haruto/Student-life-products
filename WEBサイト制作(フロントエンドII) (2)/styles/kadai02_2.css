@@ -1,0 +1,66 @@
+/* kadai02_2 追加分 */
+#loginBtn {
+  color: #9999ff;
+  cursor: pointer;
+}
+
+#loginDialog {
+  width: 30%;
+  margin: auto;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1em black;
+}
+
+#loginDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#loginWrapper {
+  width: 100%;
+}
+
+#loginHeader {
+  background-color: skyblue;
+  padding: 5px 10px;
+}
+
+#loginHeader h2 {
+  font-size: 1em;
+  margin: 0;
+}
+
+#loginHeader button {
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+#loginWrapper div {
+  width: 80%;
+  margin: 10px auto;
+}
+
+#loginWrapper input {
+  width: 100%;
+  height: 1.5em;
+  font-size: 1.2em;
+}
+
+#loginWrapper button[type=submit] {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px 0;
+  font-size: 1.2em;
+  background-color: aqua;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+#loginWrapper button[type=submit]:hover {
+  background-color: skyblue;
+}

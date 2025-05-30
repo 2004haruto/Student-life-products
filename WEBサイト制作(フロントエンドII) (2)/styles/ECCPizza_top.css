@@ -1,0 +1,256 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  border: none;
+  vertical-align: top;
+}
+
+a:link {
+  text-decoration: none;
+  color: #9999ff;
+}
+
+a:visited {
+  color: #ff7f7f;
+}
+
+a:hover {
+  color: #ff0000;
+}
+
+header {
+  background-color: #f0ffba;
+  width: 100%;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+h1 {
+  margin: 5px 0;
+}
+
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: bold;
+}
+
+.nav-menu li {
+  margin: 0 10px;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h3 {
+  font-size: 1.8em;
+  text-align: center;
+}
+
+h2 img {
+  width: 100%;
+}
+
+.about {
+  background-image: url("../images/about.jpg");
+  background-position: center;
+  width: 100%;
+  height: 450px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.about-info {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-info a {
+  text-decoration: underline;
+  color: white;
+}
+
+.about-info a:hover {
+  font-size: 1.1em;
+}
+
+.popular-items {
+  margin: 10px 0;
+}
+
+.popular-items h3 {
+  border-bottom: 1px solid red;
+}
+
+.item-wrap {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.popular-item {
+  width: 45%;
+  min-width: 360px;
+  margin: 5px 0;
+  font-size: 1.3em;
+}
+
+.popular-item img {
+  width: 100%;
+}
+
+.item-info {
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.items-link {
+  padding-right: 10px;
+  text-align: right;
+}
+
+.news {
+  margin: 10px 0;
+}
+
+.news h3 {
+  border-bottom: 1px solid red;
+}
+
+.news table {
+  width: 100%;
+}
+
+.news th, td {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.news tfoot {
+  text-align: center;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 100;
+}
+
+footer {
+  background-color: #f0ffba;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.sns-icons {
+  width: 100%;
+}
+
+.sns-icons img {
+  margin: 20px;
+  vertical-align: middle;
+}
+
+/* 後期追加分 */
+#loginBtn {
+  color: #9999ff;
+  cursor: pointer;
+}
+
+#loginDialog {
+  width: 30%;
+  margin: auto;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1em black;
+}
+
+#loginDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#loginWrapper {
+  width: 100%;
+}
+
+#loginHeader {
+  background-color: skyblue;
+  padding: 5px 10px;
+}
+
+#loginHeader h2 {
+  font-size: 1em;
+  margin: 0;
+}
+
+#loginHeader button {
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+#loginWrapper div {
+  width: 80%;
+  margin: 10px auto;
+}
+
+#loginWrapper input {
+  width: 100%;
+  height: 1.5em;
+  font-size: 1.2em;
+}
+
+#loginWrapper button[type=submit] {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px 0;
+  font-size: 1.2em;
+  background-color: aqua;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+#loginWrapper button[type=submit]:hover {
+  background-color: skyblue;
+}

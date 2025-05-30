@@ -1,0 +1,45 @@
+#itemDialog {
+  width: 90%;
+  margin: auto;
+  border: none;
+  outline: none;
+}
+
+#itemDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#itemWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#itemImageWrapper {
+  width: 50%;
+}
+
+#itemImageWrapper img {
+  width: 100%;
+  padding: 10px;
+}
+
+#itemDescriptionWrapper {
+  width: 50%;
+  padding: 10px;
+}
+
+#itemDialogDescription {
+  margin: 10px 0;
+}
+
+#itemDialogPrice {
+  text-align: right;
+  font-size: 1.2em;
+}
+
+#itemDialog span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
