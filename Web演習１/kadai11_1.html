@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/kadai11_1.css">
+    <title>ECC Pizza | お届け先情報登録</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <img src="images/ECCPizza_logo_250_90.png" alt="ロゴ" width="125">
+        </h1>
+
+        <ul class="nav-menu">
+            <li>メニュー</li>
+            <li>店舗情報</li>
+            <li><a href="kadai02_2.html">ECC Pizza について</a></li>
+            <li>最新ニュース</li>
+            <li>カート</li>
+        </ul>
+    </header>
+    <main>
+        <form action="http://10.201.10.38/~ie1a05/kadai12_1.php" method="post">
+            <h2>
+                お客様情報入力
+            </h2>
+            <div>
+                <label for="uname">お名前</label><br>
+                <input type="text" name="uname" id="uname" required placeholder="例:山田太郎">
+            </div>
+            <div>
+                <label for="ruby">フリガナ</label><br>
+                <input type="text" name="ruby" id="ruby" required placeholder="例:ヤマダタロウ">
+            </div>
+            <div>
+                <label for="mail">メールアドレス</label><br>
+                <input type="email" name="mail" id="mail" required placeholder="例:example@example.com">
+            </div>
+            <div>
+                <label for="password">パスワード</label><br>
+                <input type="password" name="password" id="password" required placeholder="8文字以上の英数字">
+            </div>
+            <div>
+                <label for="confirmPassword">パスワード(確認用)</label><br>
+                <input type="password" name="confirmPassword" id="confirmPassword" required placeholder="8文字以上の英数字">
+            </div>
+            <div>
+                <label for="tel">電話番号</label><br>
+                <input type="tel" name="tel" id="tel" required placeholder="例:09012345678">
+            </div>
+            <div>
+                <label for="postal">郵便番号</label><br>
+                <input type="text" name="postal" id="postal" required placeholder="例:123-4567">
+            </div>
+            <div>
+                <label for="address">お届け先住所</label><br>
+                <input type="text" name="address" id="address" required placeholder="例:大阪府大阪市北区中崎1-2-34">
+            </div>
+            <div>
+                <label for="checkDM">
+                    <input type="checkbox" name="checkDM" id="checkDM" value="1">
+                    お得なクーポンをメールで受け取る
+                </label>
+            </div>
+            <button type="submit" id="submit">送信</button>
+        </form>
+    </main>
+    <footer>
+        <div class="sns-icons">
+            <a href="#"><img src="./images/twitter.png" alt="twitter" width="32"></a>
+            <a href="#"><img src="./images/facebook.png" alt="facebook" width="32"></a>
+            <a href="#"><img src="./images/instagram.png" alt="instagram" width="32"></a>
+        </div>
+        <p><small>Copyright &copy; 2023 ECC Pizza. All Rights Reserved.</small></p>
+    </footer>
+</body>
+
+</html>

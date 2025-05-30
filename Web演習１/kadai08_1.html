@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/kadai08_1.css">
+    <title>position の練習</title>
+</head>
+
+<body>
+    <header>
+        <h1>Position</h1>
+    </header>
+    <main>
+        <p class="text">この回ではZ-indexプロパティについて学びましょう。<br>
+            postionプロパティは、包含ブロックを基準として配置されます。通常包含ブロックはbody要素になるので、つまりブラウザ画面の一番左上の部分が基準となって配置されます。<br>
+            この課題のようにboxIDを基準として配置を行いたい場合はboxIDを包含ブロックとする為にpostionプロパティをrelativeに設定する事で、中の子要素がboxIDの左上を基準として配置出来るようになります。
+        </p>
+        
+            <p id="photo1"><img src="images/kadai08_pic01.png" alt="photo1"></p>
+            <p id="photo2"><img src="images/kadai08_pic02.png" alt="photo2"></p>
+            <p id="photo3"><img src="images/kadai08_pic03.png" alt="photo3"></p>
+            <p id="photo4"><img src="images/kadai08_pic04.png" alt="photo4"></p>
+        
+    </main>
+</body>
+
+</html>

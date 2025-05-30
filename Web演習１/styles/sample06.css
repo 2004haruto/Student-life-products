@@ -1,0 +1,18 @@
+h1{
+    color:tomato;
+    font-size: 64px;
+}
+
+#test{
+    color: blue;
+}
+
+.test-class{
+    color: red;
+    font-size: 32px;
+}
+
+#content p {
+    color:blue;
+    font-weight: bold;
+}

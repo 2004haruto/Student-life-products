@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/kadai11_2.css">
+    <title>ECC Pizza | アンケート</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <img src="images/ECCPizza_logo_250_90.png" alt="ロゴ" width="125">
+        </h1>
+
+        <ul class="nav-menu">
+            <li>メニュー</li>
+            <li>店舗情報</li>
+            <li><a href="kadai02_2.html">ECC Pizza について</a></li>
+            <li>最新ニュース</li>
+            <li>カート</li>
+        </ul>
+    </header>
+    <main>
+        <form action="https://click.ecc.ac.jp/ecc/y_arikawa/web1/kadai11_2_result.php" method="post">
+            <div class="form-header">
+                <h2>
+                    アンケート
+                </h2>
+                お客様のご意見ご感想をお聞かせください。<br>
+                お答えいただいた方には、抽選で1名様に1,000円分のクーポンをプレゼントします。
+            </div>
+            <div>
+                <p>
+                    ECCPizzaをどこで知りましたか<br>
+                    <label for="know1"><input type="radio" name="know" id="know1" value="1">ホームページ</label>
+                    <label for="know2"><input type="radio" name="know" id="know2" value="2">SNS</label>
+                    <label for="know3"><input type="radio" name="know" id="know3" value="2">雑誌</label>
+                    <label for="know4"><input type="radio" name="know" id="know4" value="2">新聞</label>
+                    <label for="know5"><input type="radio" name="know" id="know5" value="2">その他</label><br>
+                    <input type="text" name="knowOther" id="knowOther" placeholder="その他を選んだ方はこちらにご入力ください。">
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECCPizzaをご利用いただいた店舗はどちらですか？<br>
+                    <select name="useShop">
+                        <option value="1">中崎町店</option>
+                        <option value="2">心斎橋店</option>
+                        <option value="3">森ノ宮店</option>
+                    </select>
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECCPizzaのご利用目的は何ですか?(複数回答可)<br>
+                    <label for="purpose1"><input type="checkbox" name="purpose[]" id="purpose1" value="1">普段のお食事</label>
+                    <label for="purpose2"><input type="checkbox" name="purpose[]" id="purpose2" value="2">特別な日のお食事</label>
+                    <label for="purpose3"><input type="checkbox" name="purpose[]" id="purpose3" value="3">友人や家族との集まり</label>
+                    <label for="purpose4"><input type="checkbox" name="purpose[]" id="purpose4" value="4">その他</label><br>
+                    <input type="text" name="purposeOther" id="purposeOther" placeholder="その他を選んだ方はこちらにご入力ください。">
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECCPizzaのメニューはいかかでしたか？<br>
+                    <label for="menu1"><input type="radio" name="menu" id="menu1" value="1">とても満足</label>
+                    <label for="menu2"><input type="radio" name="menu" id="menu2" value="2">満足</label>
+                    <label for="menu3"><input type="radio" name="menu" id="menu3" value="3">どちらともいえない</label>
+                    <label for="menu4"><input type="radio" name="menu" id="menu4" value="4">不満</label>
+                    <label for="menu5"><input type="radio" name="menu" id="menu5" value="5">とても不満</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECCPizzaのサービスはいかかでしたか？<br>
+                    <label for="service1"><input type="radio" name="service" id="service1" value="1">とても満足</label>
+                    <label for="service2"><input type="radio" name="service" id="service2" value="2">満足</label>
+                    <label for="service3"><input type="radio" name="service" id="service3" value="3">どちらともいえない</label>
+                    <label for="service4"><input type="radio" name="service" id="service4" value="4">不満</label>
+                    <label for="service5"><input type="radio" name="service" id="service5" value="5">とても不満</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECCPizzaの店舗の清潔感はいかかでしたか？<br>
+                    <label for="clean1"><input type="radio" name="clean" id="clean1" value="1">とても満足</label>
+                    <label for="clean2"><input type="radio" name="clean" id="clean2" value="2">満足</label>
+                    <label for="clean3"><input type="radio" name="clean" id="clean3" value="3">どちらともいえない</label>
+                    <label for="clean4"><input type="radio" name="clean" id="clean4" value="4">不満</label>
+                    <label for="clean5"><input type="radio" name="clean" id="clean5" value="5">とても不満</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECC Pizzaの価格はいかがでしたか？<br>
+                    <label for="price1"><input type="radio" name="price" id="price1" value="1">安いと思う</label>
+                    <label for="price2"><input type="radio" name="price" id="price2" value="2">適切だと思う</label>
+                    <label for="price3"><input type="radio" name="price" id="price3" value="3">高いと思う</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECC Pizzaを再利用するご予定はありますか？<br>
+                    <label for="reuse1"><input type="radio" name="reuse" id="reuse1" value="1">はい</label>
+                    <label for="reuse2"><input type="radio" name="reuse" id="reuse2" value="2">いいえ</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    ECC Pizzaをご家族やご友人にオススメしたいと思いますか？<br>
+                    <label for="recommend1"><input type="radio" name="recommend" id="recommend1" value="1">はい</label>
+                    <label for="recommend2"><input type="radio" name="recommend" id="recommend2" value="2">いいえ</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    最後にご意見ご感想をお聞かせください<br>
+                    <textarea name="impressions" id="impressions" cols="30" rows="10"></textarea>
+                </p>
+            </div>
+            <button type="submit" id="submit">送信</button>
+        </form>
+    </main>
+    <footer>
+        <img src="./images/ECCPizza_logo.png" width="200" alt="ECCPizza_logo">
+        <div class="sns-icons">
+            <a href="#"><img src="./images/twitter.png" alt="twitter" width="32"></a>
+            <a href="#"><img src="./images/facebook.png" alt="facebook" width="32"></a>
+            <a href="#"><img src="./images/instagram.png" alt="instagram" width="32"></a>
+        </div>
+        <p><small>Copyright &copy; 2023 ECC Pizza. All Rights Reserved.</small></p>
+    </footer>
+</body>
+
+</html>
