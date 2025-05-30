@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/kadai02_1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>JavaScript - 課題02_1</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- wrapper -->
+    <header>
+      <h1 id="logo">Web2 JavaScript</h1>
+    </header>
+
+    <main id="content-wrap">
+      <div id="description">
+        <h2>JavaScriptを使ったCSSの操作</h2>
+        <p class="text">下にあるテキストボックスとボタンを使って、動的に指定されたプロパティを操作してみましょう。</p>
+      </div>
+      <div id="content">
+        <div id="box1">
+          <h3>背景色を設定する</h3>
+          <p id="box1Text" class="text">
+            ID名:box1の背景色を下のテキストボックスに入力したカラーコードに変更してみましょう。<br>
+            【ヒント】CSSで背景色を設定するプロパティはbackground-colorでした。
+          </p>
+          <div class="form">
+            <input type="text" id="setBgTxt">
+            <button type="button" id="box1BgBtn">背景色を変更</button>
+          </div>
+        </div>
+        <div id="box2">
+          <h3>文字色を設定する</h3>
+          <p id="box2Text" class="text">
+            ID名:box2Textの文字色を下のテキストボックスに入力したカラーコードに変更してみましょう。<br>
+            【ヒント】CSSで文字色を設定するプロパティはcolorでした。
+          </p>
+          <div class="form">
+            <input type="text" id="setColorTxt">
+            <button type="button" id="box2ColorBtn">文字色を変更</button>
+          </div>
+        </div>
+        <div id="box3">
+          <h3>文字サイズを設定する</h3>
+          <p id="box3Text" class="text">
+            ID名:box3Textの文字サイズを下のテキストボックスに入力した大きさに変更してみましょう。<br>
+            【ヒント】CSSで文字サイズを設定するプロパティはfont-sizeでした。<br>
+            【ヒント】単位はpx, em, %, remなどがあります。
+          </p>
+          <div class="form">
+            <input type="text" id="setFontSizeTxt">
+            <button type="button" id="box3FontSizeBtn">文字サイズを変更</button>
+          </div>
+        </div>
+        <div id="box4">
+          <h3>罫線を設定する</h3>
+          <p id="box4Text" class="text">
+            ID名:box4の罫線を下のテキストボックスに入力した内容に変更してみましょう。<br>
+            【ヒント】CSSで罫線を設定するプロパティはborderでした。
+          </p>
+          <div class="form">
+            <input type="text" id="setBorderTxt">
+            <button type="button" id="box4BorderBtn">罫線の設定を変更</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div id="topArea">
+        <a href="#wrapper">
+          <i class="material-icons">keyboard_arrow_up</i>
+        </a>
+        <p id="copyright" class="font-weight-b">
+          <small>copyright &copy; <span id="year"></span> ECC Comp.</small>
+        </p>
+      </div>
+    </footer>
+    <!-- wrapper -->
+  </div>
+  <script src="scripts/common.js"></script>
+  <script src="scripts/kadai02_1.js"></script>
+  
+</body>
+
+</html>

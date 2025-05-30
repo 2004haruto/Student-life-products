@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/kadai01.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>JavaScript - 課題01</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- wrapper -->
+    <header>
+      <h1 id="logo">Web2 JavaScript</h1>
+    </header>
+
+    <main id="content-wrap">
+      <div id="description">
+        <h2>JavaScriptを使ったCSSの操作</h2>
+        <p class="text">下にある各コンテンツに対して、JavaScriptからスタイルを設定してみましょう。</p>
+      </div>
+      <div id="content">
+        <div id="box1">
+          <h3>背景色を設定する</h3>
+          <p id="box1Text" class="text">
+            ID名:box1の背景色をJavaScriptから設定してみましょう。どんな色にしてもかまいません。<br>
+            【ヒント】CSSで背景色を設定するプロパティはbackground-colorでした。
+          </p>
+        </div>
+        <div id="box2">
+          <h3>文字色を設定する</h3>
+          <p id="box2Text" class="text">
+            ID名:box2Textの文字色をJavaScriptから設定してみましょう。どんな色にしてもかまいません。<br>
+            【ヒント】CSSで文字色を設定するプロパティはcolorでした。
+          </p>
+        </div>
+        <div id="box3">
+          <h3>文字サイズを設定する</h3>
+          <p id="box3Text" class="text">
+            ID名:box3Textの文字サイズをJavaScriptから設定してみましょう。どんなサイズにしてもかまいません。<br>
+            【ヒント】CSSで文字サイズを設定するプロパティはfont-sizeでした。
+          </p>
+        </div>
+        <div id="box4">
+          <h3>罫線を設定する</h3>
+          <p id="box4Text" class="text">
+            ID名:box4の罫線をJavaScriptから設定してみましょう。どんな罫線にしてもかまいません。<br>
+            【ヒント】CSSで罫線を設定するプロパティはborderでした。
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div id="topArea">
+        <a href="#wrapper">
+          <i class="material-icons">keyboard_arrow_up</i>
+        </a>
+        <p id="copyright" class="font-weight-b">
+          <small>copyright &copy; <span id="year"></span> ECC Comp.</small>
+        </p>
+      </div>
+    </footer>
+    <!-- wrapper -->
+  </div>
+  <script src="scripts/common.js"></script>
+  <script src="scripts/kadai01.js"></script>
+  
+</body>
+
+</html>

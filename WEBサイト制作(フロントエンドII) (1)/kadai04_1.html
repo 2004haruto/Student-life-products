@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- link -->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/kadai04_1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <title>kadai04_1 - JavaScript1</title>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1 id="logo">Web2 JavaScript</h1>
+    </header>
+
+    <main id="content-wrap">
+      <h2>世界遺産ギャラリー</h2>
+      <div id="content">
+        <div class="wrapper">
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic01.jpg" alt="富士山">
+            </figure>
+            <div class="info">
+              <h3>富士山</h3>
+              <div>日本</div>
+            </div>
+          </article>
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic02.jpg" alt="マチュピチュ">
+            </figure>
+            <div class="info">
+              <h3>マチュピチュ</h3>
+              <div>ペルー</div>
+            </div>
+          </article>
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic03.jpg" alt="タージ・マハル">
+            </figure>
+            <div class="info">
+              <h3>タージ・マハル</h3>
+              <div>インド</div>
+            </div>
+          </article>
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic04.jpg" alt="ベネツィア">
+            </figure>
+            <div class="info">
+              <h3>ベネツィア</h3>
+              <div>イタリア</div>
+            </div>
+          </article>
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic05.jpg" alt="万里の長城">
+            </figure>
+            <div class="info">
+              <h3>万里の長城</h3>
+              <div>中国</div>
+            </div>
+          </article>
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic06.jpg" alt="白川郷">
+            </figure>
+            <div class="info">
+              <h3>白川郷</h3>
+              <div>日本</div>
+            </div>
+          </article>
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic07.jpg" alt="モン・サン・ミシェル">
+            </figure>
+            <div class="info">
+              <h3>モン・サン・ミシェル</h3>
+              <div>フランス</div>
+            </div>
+          </article>
+          <article class="list">
+            <figure class="thumbnail">
+              <img src="images/pic08.jpg" alt="モアイ像">
+            </figure>
+            <div class="info">
+              <h3>モアイ像</h3>
+              <div>チリ</div>
+            </div>
+          </article>
+        </div><!--/.wrapper-->
+      </div><!--/#content-->
+
+    </main><!--/#contentWrap-->
+
+    <footer>
+      <div id="topArea"><a href="#wrapper"><i class="material-icons">keyboard_arrow_up</i></a></div>
+      <p id="copyright" class="font-weight-b">
+        <small>copyright &copy; <span id="year"></span> ECC Comp</small>
+      </p>
+    </footer>
+
+    <dialog id="imgDialog">
+      <div>
+        <img src="images/pic01.jpg" alt="拡大画像">
+        <i class="material-icons">close</i>
+      </div>
+    </dialog>
+  </div><!--/#wrapper-->
+
+  <script src="scripts/common.js"></script>
+  <script src="scripts/kadai04_1.js"></script>
+</body>
+</html>
