@@ -1,0 +1,253 @@
+mysql> source database8.sql
+--------------
+SELECT 
+    E1.EMP_NO, E1.ENAME, E1.MGR_NO, E2.ENAME AS ENAME
+FROM 
+    employee AS E1
+LEFT JOIN 
+    employee AS E2 ON E1.MGR_NO = E2.EMP_NO
+--------------
+
++--------+-----------------+--------+--------------+
+| EMP_NO | ENAME           | MGR_NO | ENAME        |
++--------+-----------------+--------+--------------+
+| 00001  | 小林友治        | NULL   | NULL         |
+| 00002  | 小林圭輔        | 00001  | 小林友治     |
+| 00003  | 友保隼平        | 00002  | 小林圭輔     |
+| 00004  | 稲田直樹        | 00002  | 小林圭輔     |
+| 00005  | 河井ゆずる      | 00002  | 小林圭輔     |
+| 00006  | 村上信五        | 00001  | 小林友治     |
+| 00007  | 横山裕          | 00006  | 村上信五     |
+| 00008  | 大倉忠義        | 00006  | 村上信五     |
+| 00009  | 安田章大        | 00006  | 村上信五     |
+| 00010  | 丸山隆平        | 00006  | 村上信五     |
+| 00011  | 秋元真夏        | 00016  | 升野英知     |
+| 00012  | 生田絵梨花      | 00016  | 升野英知     |
+| 00014  | 白石麻衣        | 00016  | 升野英知     |
+| 00015  | 高山一実        | 00016  | 升野英知     |
+| 00016  | 升野英知        | 00001  | 小林友治     |
+| 00017  | 松村沙友里      | 00016  | 升野英知     |
+| 00018  | 山名文和        | NULL   | NULL         |
+| 00019  | 秋山賢太        | NULL   | NULL         |
++--------+-----------------+--------+--------------+
+18 rows in set (0.00 sec)
+
+--------------
+SELECT E1.WORK_STORE, S.SNAME, E1.ENAME, E1.MGR_NO, E2.ENAME
+FROM EMPLOYEE AS E1
+LEFT JOIN STORE AS S ON E1.WORK_STORE = S.STORE_NO
+LEFT JOIN EMPLOYEE AS E2 ON E1.MGR_NO = E2.EMP_NO
+ORDER BY E1.WORK_STORE
+--------------
+
++------------+--------------+-----------------+--------+--------------+
+| WORK_STORE | SNAME        | ENAME           | MGR_NO | ENAME        |
++------------+--------------+-----------------+--------+--------------+
+| NULL       | NULL         | 秋山賢太        | NULL   | NULL         |
+| 001        | 中崎町店     | 小林圭輔        | 00001  | 小林友治     |
+| 001        | 中崎町店     | 友保隼平        | 00002  | 小林圭輔     |
+| 001        | 中崎町店     | 稲田直樹        | 00002  | 小林圭輔     |
+| 001        | 中崎町店     | 河井ゆずる      | 00002  | 小林圭輔     |
+| 002        | 森ノ宮店     | 村上信五        | 00001  | 小林友治     |
+| 002        | 森ノ宮店     | 横山裕          | 00006  | 村上信五     |
+| 002        | 森ノ宮店     | 大倉忠義        | 00006  | 村上信五     |
+| 002        | 森ノ宮店     | 安田章大        | 00006  | 村上信五     |
+| 002        | 森ノ宮店     | 丸山隆平        | 00006  | 村上信五     |
+| 003        | 生駒店       | 小林友治        | NULL   | NULL         |
+| 004        | NULL         | 山名文和        | NULL   | NULL         |
+| 005        | 阿倍野店     | 秋元真夏        | 00016  | 升野英知     |
+| 005        | 阿倍野店     | 生田絵梨花      | 00016  | 升野英知     |
+| 005        | 阿倍野店     | 白石麻衣        | 00016  | 升野英知     |
+| 005        | 阿倍野店     | 高山一実        | 00016  | 升野英知     |
+| 005        | 阿倍野店     | 升野英知        | 00001  | 小林友治     |
+| 005        | 阿倍野店     | 松村沙友里      | 00016  | 升野英知     |
++------------+--------------+-----------------+--------+--------------+
+18 rows in set (0.00 sec)
+
+--------------
+UPDATE employee
+SET job = '店長', RANK_POINT = 1200, WORK_STORE = '006', MGR_NO = '00001'
+WHERE ename = '山名文和'
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+UPDATE employee
+SET job = '調理', RANK_POINT = 100, WORK_STORE = '006', MGR_NO = '00018'
+WHERE ename = '秋山賢太'
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+select EMP_NO, ENAME, JOB, RANK_POINT, WORK_STORE, MGR_NO from employee
+where EMP_NO = '00018' OR EMP_NO = '00019'
+--------------
+
++--------+--------------+--------+------------+------------+--------+
+| EMP_NO | ENAME        | JOB    | RANK_POINT | WORK_STORE | MGR_NO |
++--------+--------------+--------+------------+------------+--------+
+| 00018  | 山名文和     | 店長   |       1200 | 006        | 00001  |
+| 00019  | 秋山賢太     | 調理   |        100 | 006        | 00018  |
++--------+--------------+--------+------------+------------+--------+
+2 rows in set (0.00 sec)
+
+--------------
+commit
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+SELECT product_no AS 'PRODUCT_NO', pname AS 'PNAME', price AS 'PRICE'
+FROM product
+WHERE category = 'ピザ'
+UNION ALL
+SELECT prototype_no AS 'PRODUCT_NO', protoname AS 'PNAME', price AS 'PRICE'
+FROM prototype
+WHERE category = 'ピザ'
+--------------
+
++------------+--------------------------+-------+
+| PRODUCT_NO | PNAME                    | PRICE |
++------------+--------------------------+-------+
+| 0001       | マルゲリータ             |  1200 |
+| 0002       | デラックスピザ           |  1700 |
+| 0003       | シーフードピザ           |  1500 |
+| 0004       | ギガミート               |  2500 |
+| 0005       | チキン＆ベーコン         |  2200 |
+| 0006       | BBQチキン                |  2200 |
+| 0007       | BBQシーフード            |  3000 |
+| 9001       | MAXチーズピザ            |  3000 |
+| 9002       | 夏野菜ピザ               |  3000 |
++------------+--------------------------+-------+
+9 rows in set (0.00 sec)
+
+--------------
+SELECT 
+        P.PRODUCT_NO,P.PNAME,M.MNAME,R.QUANTITY 
+    FROM
+        PRODUCT AS P 
+    LEFT 
+        JOIN RECIPE AS R ON R.PRODUCT_NO = P.PRODUCT_NO
+    LEFT 
+        JOIN MATERIAL AS M ON R.MATERIAL_NO = M.MATERIAL_NO
+    WHERE P.PNAME LIKE '%BBQ%'
+--------------
+
++------------+--------------------+-----------------------+----------+
+| PRODUCT_NO | PNAME              | MNAME                 | QUANTITY |
++------------+--------------------+-----------------------+----------+
+| 0006       | BBQチキン          | ホワイトソース        |        1 |
+| 0006       | BBQチキン          | トマトソース          |        1 |
+| 0006       | BBQチキン          | コーン                |        1 |
+| 0006       | BBQチキン          | ローストチキン        |        3 |
+| 0006       | BBQチキン          | チーズ                |        1 |
+| 0007       | BBQシーフード      | NULL                  |     NULL |
++------------+--------------------+-----------------------+----------+
+6 rows in set (0.00 sec)
+
+--------------
+SELECT R.product_no, P.pname, M.mname, R.quantity
+FROM recipe R
+LEFT JOIN product P ON R.product_no = P.product_no
+LEFT JOIN material M ON R.material_no = M.material_no
+WHERE P.pname IS NULL
+--------------
+
++------------+-------+-----------------------------+----------+
+| product_no | pname | mname                       | quantity |
++------------+-------+-----------------------------+----------+
+| 9001       | NULL  | チーズ                      |        1 |
+| 9001       | NULL  | モッツァレラチーズ          |        2 |
+| 9001       | NULL  | パルメザンチーズ            |        2 |
+| 9001       | NULL  | チェダーチーズ              |        2 |
+| 9001       | NULL  | ブルーチーズ                |        2 |
+| 9001       | NULL  | メイプルソース              |        1 |
+| 9002       | NULL  | チーズ                      |        1 |
+| 9002       | NULL  | バジル                      |        1 |
+| 9002       | NULL  | トマト                      |        1 |
+| 9002       | NULL  | ピーマン                    |        1 |
+| 9002       | NULL  | オニオン                    |        1 |
+| 9002       | NULL  | アスパラガス                |        1 |
+| 9002       | NULL  | コーン                      |        1 |
+| 9002       | NULL  | ナス                        |        1 |
+| 9002       | NULL  | ホワイトソース              |        1 |
+| 9003       | NULL  | チーズ                      |        1 |
+| 9003       | NULL  | パルメザンチーズ            |        1 |
+| 9003       | NULL  | シーフードミックス          |        1 |
+| 9003       | NULL  | トマト                      |        1 |
+| 9003       | NULL  | ピーマン                    |        1 |
+| 9003       | NULL  | バーベキューソース          |        1 |
++------------+-------+-----------------------------+----------+
+21 rows in set (0.00 sec)
+
+--------------
+SELECT R.product_no, P.protoname, M.mname, R.quantity
+    FROM recipe R
+    LEFT JOIN prototype P ON R.product_no = P.prototype_no
+    LEFT JOIN material M ON R.material_no = M.material_no
+    where P.protoname is not NULL
+--------------
+
++------------+--------------------+-----------------------------+----------+
+| product_no | protoname          | mname                       | quantity |
++------------+--------------------+-----------------------------+----------+
+| 9001       | MAXチーズピザ      | チーズ                      |        1 |
+| 9001       | MAXチーズピザ      | モッツァレラチーズ          |        2 |
+| 9001       | MAXチーズピザ      | パルメザンチーズ            |        2 |
+| 9001       | MAXチーズピザ      | チェダーチーズ              |        2 |
+| 9001       | MAXチーズピザ      | ブルーチーズ                |        2 |
+| 9001       | MAXチーズピザ      | メイプルソース              |        1 |
+| 9002       | 夏野菜ピザ         | チーズ                      |        1 |
+| 9002       | 夏野菜ピザ         | バジル                      |        1 |
+| 9002       | 夏野菜ピザ         | トマト                      |        1 |
+| 9002       | 夏野菜ピザ         | ピーマン                    |        1 |
+| 9002       | 夏野菜ピザ         | オニオン                    |        1 |
+| 9002       | 夏野菜ピザ         | アスパラガス                |        1 |
+| 9002       | 夏野菜ピザ         | コーン                      |        1 |
+| 9002       | 夏野菜ピザ         | ナス                        |        1 |
+| 9002       | 夏野菜ピザ         | ホワイトソース              |        1 |
++------------+--------------------+-----------------------------+----------+
+15 rows in set (0.00 sec)
+
+--------------
+UPDATE recipe
+SET product_no ='0007'
+WHERE product_no = '9003'
+--------------
+
+Query OK, 6 rows affected (0.00 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+--------------
+SELECT P.product_no, P.pname, M.mname, R.quantity
+         FROM product P
+         LEFT JOIN recipe R ON R.product_no = P.product_no
+         LEFT JOIN material M ON R.material_no = M.material_no
+         where P.product_no = '0007'
+         ORDER BY M.material_no
+--------------
+
++------------+--------------------+-----------------------------+----------+
+| product_no | pname              | mname                       | quantity |
++------------+--------------------+-----------------------------+----------+
+| 0007       | BBQシーフード      | チーズ                      |        1 |
+| 0007       | BBQシーフード      | パルメザンチーズ            |        1 |
+| 0007       | BBQシーフード      | シーフードミックス          |        1 |
+| 0007       | BBQシーフード      | トマト                      |        1 |
+| 0007       | BBQシーフード      | ピーマン                    |        1 |
+| 0007       | BBQシーフード      | バーベキューソース          |        1 |
++------------+--------------------+-----------------------------+----------+
+6 rows in set (0.00 sec)
+
+--------------
+commit
+--------------
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> notee

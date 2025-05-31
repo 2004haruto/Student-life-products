@@ -1,0 +1,336 @@
+mysql> source database10.sql
+--------------
+CREATE TABLE BIKE (
+    BIKE_NO char(5),
+    BNAME varchar(50),
+    BUY_DATE date,
+    LENGTH int(4),
+    HEIGHT int(4),
+    WIDTH int(4),
+    SEAT_HEIGHT int(4),
+    WEIGHT int(4),
+    CAPACITY double(4,1),
+    DISPLACEMENT int(4),
+    STORE_NO char(3)
+)
+--------------
+
+Query OK, 0 rows affected, 7 warnings (0.04 sec)
+
+--------------
+SHOW COLUMNS FROM BIKE
+--------------
+
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| BIKE_NO      | char(5)     | YES  |     | NULL    |       |
+| BNAME        | varchar(50) | YES  |     | NULL    |       |
+| BUY_DATE     | date        | YES  |     | NULL    |       |
+| LENGTH       | int         | YES  |     | NULL    |       |
+| HEIGHT       | int         | YES  |     | NULL    |       |
+| WIDTH        | int         | YES  |     | NULL    |       |
+| SEAT_HEIGHT  | int         | YES  |     | NULL    |       |
+| WEIGHT       | int         | YES  |     | NULL    |       |
+| CAPACITY     | double(4,1) | YES  |     | NULL    |       |
+| DISPLACEMENT | int         | YES  |     | NULL    |       |
+| STORE_NO     | char(3)     | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+--------------
+INSERT INTO BIKE
+(BIKE_NO, BNAME, BUY_DATE, LENGTH, HEIGHT, WIDTH, SEAT_HEIGHT, WEIGHT, CAPACITY, DISPLACEMENT, STORE_NO)
+VALUES
+('00001', 'スーパーカブ50 プロ', CURRENT_DATE, 1860, 695, 1040, 735, 96, 4.3, 49, '002'),
+('00002', 'ジャイロ キャノピー', CURRENT_DATE, 1895, 660, 1690, 700, 139, 5.9, 49, '005')
+--------------
+
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+--------------
+SELECT* FROM BIKE
+--------------
+
++---------+------------------------------+------------+--------+--------+-------+-------------+--------+----------+--------------+----------+
+| BIKE_NO | BNAME                        | BUY_DATE   | LENGTH | HEIGHT | WIDTH | SEAT_HEIGHT | WEIGHT | CAPACITY | DISPLACEMENT | STORE_NO |
++---------+------------------------------+------------+--------+--------+-------+-------------+--------+----------+--------------+----------+
+| 00001   | スーパーカブ50 プロ          | 2024-01-26 |   1860 |    695 |  1040 |         735 |     96 |      4.3 |           49 | 002      |
+| 00002   | ジャイロ キャノピー          | 2024-01-26 |   1895 |    660 |  1690 |         700 |    139 |      5.9 |           49 | 005      |
++---------+------------------------------+------------+--------+--------+-------+-------------+--------+----------+--------------+----------+
+2 rows in set (0.00 sec)
+
+--------------
+commit
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+CREATE TABLE SIZE (
+    CATEGORY varchar(4) ,
+    SIZE char(1) ,
+    DIFF int(5) DEFAULT 0
+)
+--------------
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+--------------
+SHOW COLUMNS FROM SIZE
+--------------
+
++----------+------------+------+-----+---------+-------+
+| Field    | Type       | Null | Key | Default | Extra |
++----------+------------+------+-----+---------+-------+
+| CATEGORY | varchar(4) | YES  |     | NULL    |       |
+| SIZE     | char(1)    | YES  |     | NULL    |       |
+| DIFF     | int        | YES  |     | 0       |       |
++----------+------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+--------------
+INSERT INTO SIZE (CATEGORY, SIZE, DIFF) VALUES
+('ピザ', 'S', 0),
+('ピザ', 'M', 500),
+('ピザ', 'L', 1000),
+('ドリンク', 'S', -30),
+('ドリンク', 'M', 0),
+('ドリンク', 'L', 50)
+--------------
+
+Query OK, 6 rows affected (0.00 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+--------------
+SELECT * FROM SIZE
+--------------
+
++--------------+------+------+
+| CATEGORY     | SIZE | DIFF |
++--------------+------+------+
+| ピザ         | S    |    0 |
+| ピザ         | M    |  500 |
+| ピザ         | L    | 1000 |
+| ドリンク     | S    |  -30 |
+| ドリンク     | M    |    0 |
+| ドリンク     | L    |   50 |
++--------------+------+------+
+6 rows in set (0.00 sec)
+
+--------------
+commit
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT
+    PRODUCT.PRODUCT_NO,
+    PRODUCT.PNAME,
+    SIZE.SIZE,
+    PRODUCT.PRICE + SIZE.DIFF AS PRICE
+FROM
+    PRODUCT
+JOIN
+    SIZE ON PRODUCT.CATEGORY = SIZE.CATEGORY
+ORDER BY
+    PRODUCT.PRODUCT_NO, PRICE
+--------------
+
++------------+--------------------------+------+-------+
+| PRODUCT_NO | PNAME                    | SIZE | PRICE |
++------------+--------------------------+------+-------+
+| 0001       | マルゲリータ             | S    |  1200 |
+| 0001       | マルゲリータ             | M    |  1700 |
+| 0001       | マルゲリータ             | L    |  2200 |
+| 0002       | デラックスピザ           | S    |  1700 |
+| 0002       | デラックスピザ           | M    |  2200 |
+| 0002       | デラックスピザ           | L    |  2700 |
+| 0003       | シーフードピザ           | S    |  1500 |
+| 0003       | シーフードピザ           | M    |  2000 |
+| 0003       | シーフードピザ           | L    |  2500 |
+| 0004       | ギガミート               | S    |  2500 |
+| 0004       | ギガミート               | M    |  3000 |
+| 0004       | ギガミート               | L    |  3500 |
+| 0005       | チキン＆ベーコン         | S    |  2200 |
+| 0005       | チキン＆ベーコン         | M    |  2700 |
+| 0005       | チキン＆ベーコン         | L    |  3200 |
+| 0006       | BBQチキン                | S    |  2200 |
+| 0006       | BBQチキン                | M    |  2700 |
+| 0006       | BBQチキン                | L    |  3200 |
+| 0007       | BBQシーフード            | S    |  3000 |
+| 0007       | BBQシーフード            | M    |  3500 |
+| 0007       | BBQシーフード            | L    |  4000 |
+| 0008       | MAXチーズピザ            | S    |  3000 |
+| 0008       | MAXチーズピザ            | M    |  3500 |
+| 0008       | MAXチーズピザ            | L    |  4000 |
+| 0009       | 夏野菜ピザ               | S    |  2500 |
+| 0009       | 夏野菜ピザ               | M    |  3000 |
+| 0009       | 夏野菜ピザ               | L    |  3500 |
+| 2001       | コーラ                   | S    |   130 |
+| 2001       | コーラ                   | M    |   160 |
+| 2001       | コーラ                   | L    |   210 |
+| 2002       | ゼロコーラ               | S    |   130 |
+| 2002       | ゼロコーラ               | M    |   160 |
+| 2002       | ゼロコーラ               | L    |   210 |
+| 2003       | ジンジャエール           | S    |   130 |
+| 2003       | ジンジャエール           | M    |   160 |
+| 2003       | ジンジャエール           | L    |   210 |
+| 2004       | メロンソーダ             | S    |   130 |
+| 2004       | メロンソーダ             | M    |   160 |
+| 2004       | メロンソーダ             | L    |   210 |
+| 2005       | カフェラテ               | S    |   130 |
+| 2005       | カフェラテ               | M    |   160 |
+| 2005       | カフェラテ               | L    |   210 |
+| 2006       | コーヒー                 | S    |   130 |
+| 2006       | コーヒー                 | M    |   160 |
+| 2006       | コーヒー                 | L    |   210 |
+| 2007       | オレンジジュース         | S    |   130 |
+| 2007       | オレンジジュース         | M    |   160 |
+| 2007       | オレンジジュース         | L    |   210 |
+| 2008       | アップルジュース         | S    |   130 |
+| 2008       | アップルジュース         | M    |   160 |
+| 2008       | アップルジュース         | L    |   210 |
++------------+--------------------------+------+-------+
+51 rows in set (0.00 sec)
+
+--------------
+RENAME TABLE EMPLOYEE TO OLD_EMP
+--------------
+
+Query OK, 0 rows affected (0.03 sec)
+
+--------------
+SHOW TABLES
+--------------
+
++-----------------+
+| Tables_in_studb |
++-----------------+
+| bike            |
+| job             |
+| material        |
+| old_emp         |
+| oldproduct      |
+| product         |
+| prototype       |
+| rankpoint       |
+| recipe          |
+| size            |
+| store           |
++-----------------+
+11 rows in set (0.00 sec)
+
+--------------
+CREATE TABLE EMPLOYEE (
+    EMP_NO char(5) ,
+    ENAME varchar(20) ,
+    BIRTHDAY date ,
+    TEL varchar(10) ,
+    ADDRESS varchar(100) ,
+    HIREDATE date ,
+    JOB_NO int(1) ,
+    RANK_POINT int(4) ,
+    SALARY int(4) CHECK (SALARY >= 0) ,
+    WORK_STORE char(3),
+    MGR_NO char(5)
+)
+--------------
+
+Query OK, 0 rows affected, 3 warnings (0.01 sec)
+
+--------------
+SHOW COLUMNS FROM employee
+--------------
+
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| EMP_NO     | char(5)      | YES  |     | NULL    |       |
+| ENAME      | varchar(20)  | YES  |     | NULL    |       |
+| BIRTHDAY   | date         | YES  |     | NULL    |       |
+| TEL        | varchar(10)  | YES  |     | NULL    |       |
+| ADDRESS    | varchar(100) | YES  |     | NULL    |       |
+| HIREDATE   | date         | YES  |     | NULL    |       |
+| JOB_NO     | int          | YES  |     | NULL    |       |
+| RANK_POINT | int          | YES  |     | NULL    |       |
+| SALARY     | int          | YES  |     | NULL    |       |
+| WORK_STORE | char(3)      | YES  |     | NULL    |       |
+| MGR_NO     | char(5)      | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+--------------
+INSERT INTO EMPLOYEE (EMP_NO, ENAME, BIRTHDAY, TEL, ADDRESS, HIREDATE, JOB_NO, RANK_POINT, SALARY, WORK_STORE, MGR_NO)
+SELECT e.EMP_NO, e.ENAME, e.BIRTHDAY, e.TEL, e.ADDRESS, e.HIREDATE, j.JOB_NO, e.RANK_POINT, e.SALARY, e.WORK_STORE, e.MGR_NO
+FROM OLD_EMP e
+JOIN JOB j ON e.JOB = j.JNAME
+--------------
+
+Query OK, 18 rows affected (0.00 sec)
+Records: 18  Duplicates: 0  Warnings: 0
+
+--------------
+SELECT EMP_NO, ENAME, JOB_NO FROM EMPLOYEE
+--------------
+
++--------+-----------------+--------+
+| EMP_NO | ENAME           | JOB_NO |
++--------+-----------------+--------+
+| 00001  | 小林友治        |      1 |
+| 00002  | 小林圭輔        |      1 |
+| 00003  | 友保隼平        |      3 |
+| 00004  | 稲田直樹        |      2 |
+| 00005  | 河井ゆずる      |      4 |
+| 00006  | 村上信五        |      1 |
+| 00007  | 横山裕          |      2 |
+| 00008  | 大倉忠義        |      2 |
+| 00009  | 安田章大        |      4 |
+| 00010  | 丸山隆平        |      3 |
+| 00011  | 秋元真夏        |      4 |
+| 00012  | 生田絵梨花      |      2 |
+| 00014  | 白石麻衣        |      4 |
+| 00015  | 高山一実        |      3 |
+| 00016  | 升野英知        |      1 |
+| 00017  | 松村沙友里      |      2 |
+| 00018  | 山名文和        |      1 |
+| 00019  | 秋山賢太        |      4 |
++--------+-----------------+--------+
+18 rows in set (0.00 sec)
+
+--------------
+commit
+--------------
+
+Query OK, 0 rows affected (0.03 sec)
+
+--------------
+drop table old_emp
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+SHOW TABLES
+--------------
+
++-----------------+
+| Tables_in_studb |
++-----------------+
+| bike            |
+| employee        |
+| job             |
+| material        |
+| oldproduct      |
+| product         |
+| prototype       |
+| rankpoint       |
+| recipe          |
+| size            |
+| store           |
++-----------------+
+11 rows in set (0.00 sec)
+
+mysql> notee

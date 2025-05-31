@@ -1,0 +1,129 @@
+mysql> source database13.sql
+--------------
+CREATE INDEX  STO_STA_IDX  ON  STORE( STATUS )
+--------------
+
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+--------------
+SHOW INDEX  FROM  STORE
+--------------
+
++-------+------------+-------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name    | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+-------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| store |          0 | PRIMARY     |            1 | store_no    | A         |           5 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| store |          0 | TEL         |            1 | TEL         | A         |           5 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| store |          1 | STO_STA_IDX |            1 | STATUS      | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
++-------+------------+-------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+3 rows in set (0.00 sec)
+
+--------------
+ALTER TABLE EMPLOYEE ADD INDEX EMP_HIR_IDX( HIREDATE ),
+                                ADD INDEX EMP_SAL_IDX( SALARY )
+--------------
+
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+--------------
+SHOW INDEX  FROM  EMPLOYEE
+--------------
+
++----------+------------+-------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table    | Non_unique | Key_name    | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++----------+------------+-------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| employee |          0 | PRIMARY     |            1 | EMP_NO      | A         |          18 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| employee |          0 | TEL         |            1 | TEL         | A         |          18 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| employee |          1 | WORK_STORE  |            1 | WORK_STORE  | A         |           5 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| employee |          1 | JOB_NO      |            1 | JOB_NO      | A         |           4 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| employee |          1 | MGR_NO      |            1 | MGR_NO      | A         |           6 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| employee |          1 | EMP_HIR_IDX |            1 | HIREDATE    | A         |          13 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| employee |          1 | EMP_SAL_IDX |            1 | SALARY      | A         |           9 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
++----------+------------+-------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+7 rows in set (0.00 sec)
+
+--------------
+CREATE VIEW RECIPEVIEW AS
+SELECT P.PRODUCT_NO, PNAME, MNAME, QUANTITY
+FROM PRODUCT AS P
+JOIN RECIPE AS R  ON R.PRODUCT_NO = P.PRODUCT_NO
+JOIN MATERIAL AS M ON M.MATERIAL_NO = R.MATERIAL_NO
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SHOW COLUMNS  FROM RECIPEVIEW
+--------------
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| PRODUCT_NO | char(4)     | NO   |     | NULL    |       |
+| PNAME      | varchar(50) | YES  |     | NULL    |       |
+| MNAME      | varchar(50) | NO   |     | NULL    |       |
+| QUANTITY   | int         | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM RECIPEVIEW
+WHERE PRODUCT_NO = '0009'
+--------------
+
++------------+-----------------+-----------------------+----------+
+| PRODUCT_NO | PNAME           | MNAME                 | QUANTITY |
++------------+-----------------+-----------------------+----------+
+| 0009       | 夏野菜ピザ      | チーズ                |        1 |
+| 0009       | 夏野菜ピザ      | バジル                |        1 |
+| 0009       | 夏野菜ピザ      | トマト                |        1 |
+| 0009       | 夏野菜ピザ      | ピーマン              |        1 |
+| 0009       | 夏野菜ピザ      | オニオン              |        1 |
+| 0009       | 夏野菜ピザ      | アスパラガス          |        1 |
+| 0009       | 夏野菜ピザ      | コーン                |        1 |
+| 0009       | 夏野菜ピザ      | ナス                  |        1 |
+| 0009       | 夏野菜ピザ      | ホワイトソース        |        1 |
++------------+-----------------+-----------------------+----------+
+9 rows in set (0.00 sec)
+
+--------------
+CREATE VIEW EMP_VIEW AS 
+SELECT S.SNAME, J.JNAME, R.RANK_NAME, E.ENAME
+FROM  EMPLOYEE  AS E
+JOIN  STORE     AS S  ON S.STORE_NO = E.WORK_STORE
+JOIN  JOB       AS J  ON J.JOB_NO = E.JOB_NO 
+JOIN  RANKPOINT AS R  ON R.LO_POINT <= E.RANK_POINT AND R.HI_POINT >= E.RANK_POINT
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SHOW COLUMNS  FROM EMP_VIEW
+--------------
+
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| SNAME     | varchar(20) | NO   |     | NULL    |       |
+| JNAME     | varchar(4)  | NO   |     | NULL    |       |
+| RANK_NAME | varchar(6)  | NO   |     | NULL    |       |
+| ENAME     | varchar(20) | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM EMP_VIEW
+WHERE SNAME = '尼崎店'
+--------------
+
++-----------+--------+--------------+--------------+
+| SNAME     | JNAME  | RANK_NAME    | ENAME        |
++-----------+--------+--------------+--------------+
+| 尼崎店    | 店長   | ミドル       | 山名文和     |
+| 尼崎店    | 調理   | ビギナー     | 秋山賢太     |
++-----------+--------+--------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> notee
