@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1.center {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.SignUpBox {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    background-color: #e0f7fa;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.tourokuBtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.tourokuBtn:hover {
+    background-color: #45a049;
+}
+
+.tourokuBtn:active {
+    transform: scale(0.98);
+}
+
+.comeBack {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.comeBack:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+    }
+
+    .tourokuBtn {
+        font-size: 0.9em;
+    }
+
+    .comeBack {
+        font-size: 0.8em;
+    }
+}

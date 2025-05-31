@@ -1,0 +1,62 @@
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e8f5e9; /* Light green background */
+}
+
+header {
+    background-color: #4caf50; /* Dark green */
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    font-size: 1.5em;
+}
+
+/* Main section styling */
+main {
+    padding: 2em;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    background-color: white;
+}
+
+th, td {
+    padding: 1em;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #81c784; /* Light green */
+}
+
+tr:nth-child(even) {
+    background-color: #c8e6c9; /* Very light green */
+}
+
+tr:nth-child(odd) {
+    background-color: #e8f5e9; /* Light green background */
+}
+
+/* Button styling */
+button {
+    background-color: #388e3c; /* Dark green */
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1em;
+}
+
+button:hover {
+    background-color: #2e7d32; /* Darker green */
+}
+
