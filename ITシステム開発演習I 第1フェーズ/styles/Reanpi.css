@@ -1,0 +1,39 @@
+body{
+    text-align: center;
+}
+.wrapper{
+    background: #dcdcdc;
+    margin: 2rem;
+    border-radius: 1.5rem;
+}
+input[type=radio] {
+    appearance: none
+}
+
+input[type="radio"]:checked + label {
+    background: #31A9EE;
+    color: #ffffff; 
+    }
+.status {
+    display: inline-block;
+    margin: 5px; 
+    width: 100px; 
+    height: 45px; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+    color: #b20000; 
+    background-color: #ffffff;
+    text-align: center; 
+    line-height: 45px; 
+    cursor: pointer; 
+    border: 2px solid #006DD9;
+    border-radius: 5px; 
+}
+.okbtn{
+    cursor: pointer; 
+    border-radius: 0.8rem;
+    padding: 20px 75px;
+
+}
+
+

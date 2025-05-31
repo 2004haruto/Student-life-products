@@ -1,0 +1,72 @@
+/* コンテナフィールドのスタイル */
+.container-field {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  /* 入力フォームのスタイル */
+  .form-label {
+    margin-top: 10px;
+  }
+  
+  /* テーブルのスタイル */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  /* ヘッダーのスタイル */
+  .bg-info {
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* ボタンのスタイル */
+  .btn-danger, .btn-primary {
+    margin-right: 10px;
+  }
+  
+  /* ボタンのスタイル（編集ボタン） */
+  .btn-primary {
+    background-color: white;
+    border-color: red;
+  }
+  
+  .btn-primary:hover {
+    background-color: white;
+    border-color: orange;
+  }
+  
+  /* ボタンのスタイル（検索ボタン） */
+  .btn-primary[type="submit"] {
+    background-color: white;
+    border-color: red;
+  }
+  
+  .btn-primary[type="submit"]:hover {
+    background-color: white;
+    border-color: orange;
+  }
+  
+  /* テーブルヘッダーのスタイル */
+  .table-light {
+    background-color: #f8f9fa;
+  }
+  
+  /* テーブルセル内のテキストの色 */
+  .text-secondary {
+    color: #6c757d;
+  }
+
+  h1{
+    text-align: center;
+  }
+  

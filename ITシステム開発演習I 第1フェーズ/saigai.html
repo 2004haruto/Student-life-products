@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>災害時連絡掲示板</title>
+    <link rel="stylesheet" href="./styles/saigai.css">
+    <style>
+        .example {
+            cursor: default;
+        }
+
+        .example2 {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var uname = document.getElementById("uname").value;
+            var department = document.getElementById("department").value;
+            var ruby = document.getElementById("ruby").value;
+            var password = document.getElementById("password").value;
+
+            if (uname == "" || department == "" || ruby == "" || password == "") {
+                alert("空の項目があります。すべての項目を入力してください。");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body class="example">
+<h2 id="logo">災害時連絡掲示板</h2>
+<div class="wrapper">
+    <h3>ユーザー作成</h3>
+    <form action="sanpru.php" onsubmit="return validateForm()">
+        <div>
+            <label for="uname">お名前</label><br>
+            <input type="text" name="uname" id="uname" placeholder="例:井石太郎" autocomplete="off">
+        </div>
+        <div>
+            <label for="department">部署</label><br>
+            <input type="text" name="department" id="department" placeholder="例:営業">
+        </div>
+        <div>
+            <label for="ruby">社員番号</label><br>
+            <input type="text" name="ruby" id="ruby" maxlength="4" placeholder="例:1234" autocomplete="off"
+                   onchange="inputCheck()" pattern="[0-9]{1,4}">
+        </div>
+        <div>
+            <label for="password">パスワード</label><br>
+            <input type="password" name="password" id="password" minlength="4" maxlength="4" placeholder="4文字の英数字">
+        </div>
+        <div>
+            <button class="example2" type="submit" id="submit">登録</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
