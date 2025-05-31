@@ -1,0 +1,157 @@
+import express from 'express';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import xss from 'xss';
+import User from './models/User.js';  // 先ほど作成したUserモデルをインポート
+
+// 環境変数の設定
+dotenv.config();
+
+// Mongooseの接続URL
+const mongoURI = 'mongodb://mongo:27017/Sample09';
+
+// MongoDBに接続
+mongoose.connect(mongoURI)
+.then(() => {
+  console.log('MongoDBに接続されました。');
+}).catch((err) => {
+  console.error('MongoDB接続エラー:', err);
+});
+
+// Expressの設定
+const app = express();
+const port = 3000;
+
+// JSONのパース用ミドルウェア
+app.use(express.json());
+
+// CORS対策用のミドルウェア
+app.use(cors({ origin: 'http://localhost:5500', credentials: true }));  // ポート番号に注意
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// アカウント登録処理（サインアップ）
+app.post('/signup', async (req, res) => {
+
+  // ユーザー入力をサニタイズ
+  const name = xss(req.body.name);
+  const email = xss(req.body.email);
+  const password = req.body.password; // パスワードはそのままでOK
+
+  // リクエストボディからデータ取得
+  //const { name, email, password } = req.body;
+
+  try{
+    // 既存アカウントの確認
+    const existingUser = await User.findOne({ email });
+    if(existingUser){
+      return res.status(400).json({ message: 'このメールアドレスは既に使用されています' });
+    }
+
+    // パスワードをハッシュ化
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // 新しいアカウントを作成
+    const newUser = new User({name, email, password: hashedPassword});
+    await newUser.save();
+
+    res.status(201).json({ message: 'アカウント登録が完了しました' });
+
+  }catch(err){
+    res.status(500).json({ message: 'アカウント登録エラー', err });
+  }
+});
+
+// ログイン処理
+app.post('/login', async (req, res) => {
+
+  // 入力をサニタイズ
+  const email = xss(req.body.email);
+  const password = req.body.password; // パスワードはそのままでOK
+
+  //const { email, password } = req.body;
+
+  try{
+    // アカウントを検索
+    const user = await User.findOne({ email });
+    if(!user){
+      return res.status(401).json({ message: 'アカウントが見つかりません' });
+    }
+
+    // パスワードを検証
+    const isMatch = await bcrypt.compare(password, user.password);
+    if(!isMatch){
+      return res.status(401).json({ message: 'パスワードが間違っています' });
+    }
+
+    // JWTトークンを生成
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    // 追加:クッキーの付与
+    // クッキーにトークンを設定（HTTP-Only属性を追加）
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // 本番環境ではSecureを有効にする
+      sameSite: 'Strict',
+      maxAge: 3600000 // 1時間（トークンの有効期限に合わせる）
+    });
+
+    res.status(200).json({ message: 'ログインに成功しました' });
+
+  }catch(err){
+    res.status(500).json({ message: 'サーバーエラー', err });
+  }
+});
+
+// 認証ミドルウェア
+const auth = (req, res, next) => {
+  //const token = req.header('Authorization');
+
+  const token = req.cookies.token; // クッキーからトークンを取得
+  
+  if (!token) {
+    return res.status(401).json({ message: 'トークンがありません。認証が必要です。' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({ message: 'トークンが無効です。' });
+  }
+};
+
+// 認証が必要なエンドポイント
+app.get('/protected', auth, (req, res) => {
+    res.status(200).json({ message: '認証されたアカウントだけが見られるデータ' });
+});
+
+// 追加：ユーザー一覧を取得するエンドポイント
+app.get('/users', auth, async (req, res) => {
+  try {
+    const users = await User.find().select('-password'); // パスワードを除外
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'ユーザーの取得に失敗しました', err });
+  }
+});
+
+// ログアウト用エンドポイント
+app.post('/logout', (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'Strict'
+  });
+  res.status(200).json({ message: 'ログアウトしました' });
+});
+
+// サーバーの起動
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
